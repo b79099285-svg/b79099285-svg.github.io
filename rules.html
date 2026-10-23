@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Правила сервера — FexingProject | CS2 Mirage 5×5</title>
+  <meta name="description" content="Правила CS2-сервера FexingProject: читы, общение, игровой процесс, наказания и апелляции. Коротко и без бюрократии.">
+  <meta name="theme-color" content="#080a0d">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FexingProject">
+  <meta property="og:title" content="Правила сервера FexingProject">
+  <meta property="og:description" content="Что можно, что нельзя и как обжаловать бан.">
+  <meta property="og:image" content="assets/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-2.9 7.7-7 10-4.1-2.3-7-5.4-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 20l1-4.1A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.5 12h.01M15.5 12h.01"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  </svg>
+
+  <header class="site-header" data-header>
+    <div class="header-progress" data-progress></div>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FexingProject — на главную">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="38" height="38">
+        <span class="brand-text"><strong>Fexing</strong><span>Project</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="index.html#server">Сервер</a>
+        <a href="index.html#map">Карта</a>
+        <a href="privileges.html">Привилегии</a>
+        <a href="rules.html" class="is-active" aria-current="page">Правила</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <div class="header-tools">
+        <button class="ip-chip" type="button" data-copy-connect aria-label="Скопировать IP сервера">
+          <span class="status-dot" data-status="online"></span>
+          <span data-ip-text>fexingproject.ru:27015</span>
+          <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+        </button>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+      <nav class="mobile-nav-inner" aria-label="Мобильная навигация">
+        <a href="index.html#server"><span>01</span>Сервер</a>
+        <a href="index.html#map"><span>02</span>Карта</a>
+        <a href="privileges.html"><span>03</span>Привилегии</a>
+        <a href="rules.html"><span>04</span>Правила</a>
+        <a href="index.html#faq"><span>05</span>FAQ</a>
+        <button class="btn btn-primary btn-block" type="button" data-copy-connect>Скопировать IP</button>
+        <a class="btn btn-ghost btn-block" href="https://discord.gg/fexingproject" data-link="discord">
+          <svg class="icon" aria-hidden="true"><use href="#i-discord"></use></svg>
+          Discord
+        </a>
+        <div class="mobile-nav-server"><span class="status-dot" data-status="online"></span><span data-ip-text>fexingproject.ru:27015</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Хлебные крошки">
+          <a href="index.html">Главная</a><span>/</span><span>Правила</span>
+        </nav>
+
+        <div class="page-hero-grid">
+          <div>
+            <p class="kicker"><span>Rules</span> Сервер</p>
+            <h1>Правила</h1>
+            <p class="page-lead">Коротко: не мешай другим играть. Всё остальное — детали, которые помогают сохранить Mirage нормальным местом.</p>
+            <div class="page-meta">
+              <span class="chip"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>Действуют в игре и Discord</span>
+              <span class="chip"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>Без токсичности</span>
+            </div>
+          </div>
+
+          <div class="page-hero-note">
+            <strong>Главное правило</strong>
+            Заходя на сервер, ты соглашаешься с этими правилами. Незнание не освобождает от бана, но апелляцию рассмотрят по-человечески.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--rules">
+      <div class="container rules-layout">
+        <aside class="rules-nav" aria-label="Содержание правил">
+          <span class="rules-nav-label">Содержание</span>
+          <a href="#general">01 · Общее</a>
+          <a href="#cheats">02 · Читы</a>
+          <a href="#communication">03 · Общение</a>
+          <a href="#gameplay">04 · Игра</a>
+          <a href="#identity">05 · Ники</a>
+          <a href="#admins">06 · Администрация</a>
+          <a href="#punishments">07 · Наказания</a>
+          <a href="#appeal">08 · Апелляции</a>
+        </aside>
+
+        <div class="rules-content">
+          <div class="callout rules-intro" data-reveal>
+            <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+            <p><strong>Правила действуют везде, где есть игроки FexingProject:</strong> на сервере, в Discord и в голосовых каналах. Администрация может пресекать поведение, которое портит игру, даже если оно не описано буквально.</p>
+          </div>
+
+          <article class="rule-section" id="general">
+            <h2><span>01</span> Общее</h2>
+            <ul class="rule-ul">
+              <li>Заходя на сервер, ты принимаешь эти правила и решения администрации.</li>
+              <li>Правила распространяются на игровой чат, голосовой чат, ник, аватар и Discord.</li>
+              <li>Незнание правил не освобождает от ответственности. Если сомневаешься — спроси до, а не после.</li>
+              <li>Администрация вправе наказать за поведение, которое не описано буквально, но явно мешает другим играть.</li>
+            </ul>
+          </article>
+
+          <article class="rule-section" id="cheats">
+            <h2><span>02</span> Читы и сторонний софт</h2>
+            <p>Запрещено всё, что даёт нечестное преимущество над другими игроками.</p>
+            <ul class="rule-ul">
+              <li><strong>Читы и обходы:</strong> wallhack, aimbot, triggerbot, анти-флеш, no-recoil и подобное.</li>
+              <li><strong>Скрипты и макросы:</strong> автоматическая стрельба, идеальный контроль отдачи, автопереключение оружия.</li>
+              <li><strong>Баг-абуз:</strong> выход за пределы карты, прострелы через текстуры, использование ошибок экономики.</li>
+              <li><strong>Обход бана:</strong> новый аккаунт, смена IP, подмена Steam ID — срок начинается заново.</li>
+            </ul>
+            <div class="callout">
+              <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+              <p><strong>За читы — перманентный бан без предупреждения.</strong> Апелляция принимается только с демо или внятным объяснением. «Я не знал» не считается.</p>
+            </div>
+          </article>
+
+          <article class="rule-section" id="communication">
+            <h2><span>03</span> Общение</h2>
+            <ul class="rule-ul">
+              <li>Уважай других игроков. Без оскорблений, угроз, травли и дискриминации.</li>
+              <li>Политика, религия и национальность — не темы для игрового чата.</li>
+              <li>Без спама, флуда, рекламы и сторонних ссылок.</li>
+              <li>Не обсуждай баны и читы в общем чате — для этого есть тикеты в Discord.</li>
+              <li>Не провоцируй конфликт специально. Спор — в игре, а не в микрофоне.</li>
+            </ul>
+          </article>
+
+          <article class="rule-section" id="gameplay">
+            <h2><span>04</span> Игровой процесс</h2>
+            <ul class="rule-ul">
+              <li>Играй на команду. Тимкилл, блокировка союзников и слив позиции портят раунд пяти людям.</li>
+              <li>Не уходи в AFK на всю игру. Нужно отойти — выйди и вернись, когда освободишься.</li>
+              <li>Не саботируй раунд: не поджигай союзников, не блокируй проходы, не сдавай позиции врагу.</li>
+              <li>Не используй баги карты и не выходи за её пределы.</li>
+              <li>Уважай решение администратора по балансу и составу команд.</li>
+            </ul>
+          </article>
+
+          <article class="rule-section" id="identity">
+            <h2><span>05</span> Ники и аватарки</h2>
+            <ul class="rule-ul">
+              <li>Без оскорблений, рекламы, экстремистской символики и порнографии.</li>
+              <li>Не выдавай себя за администратора или разработчика проекта.</li>
+              <li>Не используй ники, которые копируют других игроков, чтобы запутать команду.</li>
+              <li>Если админ попросил сменить ник или аватар — сделай это без спора.</li>
+            </ul>
+          </article>
+
+          <article class="rule-section" id="admins">
+            <h2><span>06</span> Администрация</h2>
+            <ul class="rule-ul">
+              <li>Решения администрации обязательны для всех. Обсуждать их можно в Discord, а не в игре.</li>
+              <li>Не проси привилегии, слоты и «понимание» в личных сообщениях. Для этого есть тикеты.</li>
+              <li>Донат не даёт иммунитета от наказаний и не влияет на их срок.</li>
+              <li>Если администратор нарушает правила — сообщи старшему в Discord. Это тоже тикет.</li>
+            </ul>
+          </article>
+
+          <article class="rule-section" id="punishments">
+            <h2><span>07</span> Наказания</h2>
+            <p>Таблица — ориентир, а не догма. Срок зависит от контекста, истории игрока и решения администратора.</p>
+            <p class="compare-hint">Прокрути вбок, чтобы увидеть все колонки <span aria-hidden="true">→</span></p>
+            <div class="compare-wrap">
+              <table class="compare compare--punish">
+                <caption class="sr-only">Таблица наказаний</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Нарушение</th>
+                    <th scope="col">Первый раз</th>
+                    <th scope="col">Повторно</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Читы / сторонний софт</th><td>Навсегда</td><td>Навсегда</td></tr>
+                  <tr><th scope="row">Обход бана</th><td>Навсегда</td><td>Навсегда</td></tr>
+                  <tr><th scope="row">Баг-абуз</th><td>7 дней</td><td>Навсегда</td></tr>
+                  <tr><th scope="row">Тимкилл</th><td>Предупреждение / kick</td><td>1 день → 7 дней</td></tr>
+                  <tr><th scope="row">Оскорбления</th><td>Mute 1 час</td><td>24 часа → 7 дней</td></tr>
+                  <tr><th scope="row">Спам / реклама</th><td>Mute 24 часа</td><td>7 дней</td></tr>
+                  <tr><th scope="row">AFK / саботаж</th><td>Kick</td><td>1 день</td></tr>
+                  <tr><th scope="row">Ник / аватар</th><td>Просьба сменить</td><td>1 день</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin-top:14px;font-size:11.5px;color:var(--muted-2)">Mute — блокировка чата. Ban — блокировка входа на сервер. Kick — принудительный выход без блокировки.</p>
+          </article>
+
+          <article class="rule-section" id="appeal">
+            <div class="appeal-card">
+              <h2><span style="color:var(--accent);font-family:var(--mono);font-size:9px">08</span> Апелляции</h2>
+              <p>Не согласен с баном или мутом? Не пиши в игре и не спамь администратору в личку — открой тикет в Discord. Приложи Steam ID, дату наказания и, если есть, демо. Ответ обычно в течение 48 часов.</p>
+              <p>Решение можно обжаловать один раз. Читерские баны пересматриваются только при наличии демо или явной ошибки.</p>
+              <div class="appeal-actions">
+                <a class="btn btn-primary" href="https://discord.gg/fexingproject" data-link="discord">
+                  <svg class="icon" aria-hidden="true"><use href="#i-discord"></use></svg>
+                  Открыть Discord
+                </a>
+                <a class="btn btn-ghost" href="index.html#connect">
+                  <svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+                  Вернуться на сервер
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="FexingProject — на главную">
+            <img class="brand-mark" src="assets/logo.svg" alt="" width="38" height="38">
+            <span class="brand-text"><strong>Fexing</strong><span>Project</span></span>
+          </a>
+          <p class="footer-desc">Пустынный сервер на Mirage. Одна карта, формат 5×5 и раунды, которые не заканчиваются.</p>
+          <span class="footer-badge">CS2 · Mirage · 5×5</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Сервер</h4>
+          <a href="index.html#server">О сервере</a>
+          <a href="index.html#map">Карта</a>
+          <a href="index.html#connect">Подключение</a>
+          <a href="index.html#faq">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Сообщество</h4>
+          <a href="https://discord.gg/fexingproject" data-link="discord">Discord</a>
+          <a href="https://t.me/fexingproject" data-link="telegram">Telegram</a>
+          <a href="https://steamcommunity.com/groups/fexingproject" data-link="steam">Steam-группа</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Документы</h4>
+          <a href="privileges.html">Привилегии</a>
+          <a href="rules.html">Правила</a>
+          <a href="rules.html#appeal">Апелляции</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> FexingProject. Фанатский проект, не связан с Valve Corporation.</p>
+        <p class="footer-made">Сделано на GitHub Pages <span>·</span> Без лишнего пафоса</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

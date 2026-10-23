@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FexingProject — CS2-сервер: Mirage, 5×5, бесконечные раунды</title>
+  <meta name="description" content="FexingProject — бесплатный CS2-сервер на Mirage. Формат 5×5, бесконечные раунды и привилегии без pay-to-win. Скопируй connect и заходи играть.">
+  <meta name="theme-color" content="#080a0d">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FexingProject">
+  <meta property="og:title" content="FexingProject — CS2-сервер на Mirage">
+  <meta property="og:description" content="Один сервер. Одна карта. Бесконечные раунды. Mirage 5×5 без pay-to-win.">
+  <meta property="og:image" content="assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-2.9 7.7-7 10-4.1-2.3-7-5.4-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15M15 6v15"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M18.178 8c-5.092 0-6.21 8-11.303 8C3.956 16 2 14.135 2 12s1.956-4 4.875-4c5.093 0 6.211 8 11.303 8C21.044 16 23 14.135 23 12s-1.956-4-4.822-4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 20l1-4.1A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.5 12h.01M15.5 12h.01"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="m3 7 4 4 5-7 5 7 4-4-2 12H5L3 7Z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="3"/></symbol>
+  </svg>
+
+  <header class="site-header" data-header>
+    <div class="header-progress" data-progress></div>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FexingProject — на главную">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="38" height="38">
+        <span class="brand-text"><strong>Fexing</strong><span>Project</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="index.html#server">Сервер</a>
+        <a href="index.html#map">Карта</a>
+        <a href="privileges.html">Привилегии</a>
+        <a href="rules.html">Правила</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+      <div class="header-tools">
+        <button class="ip-chip" type="button" data-copy-connect aria-label="Скопировать IP сервера">
+          <span class="status-dot" data-status="online"></span>
+          <span data-ip-text>fexingproject.ru:27015</span>
+          <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+        </button>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+      <nav class="mobile-nav-inner" aria-label="Мобильная навигация">
+        <a href="index.html#server"><span>01</span>Сервер</a>
+        <a href="index.html#map"><span>02</span>Карта</a>
+        <a href="privileges.html"><span>03</span>Привилегии</a>
+        <a href="rules.html"><span>04</span>Правила</a>
+        <a href="index.html#faq"><span>05</span>FAQ</a>
+        <button class="btn btn-primary btn-block" type="button" data-copy-connect>Скопировать IP</button>
+        <a class="btn btn-ghost btn-block" href="https://discord.gg/fexingproject" data-link="discord">
+          <svg class="icon" aria-hidden="true"><use href="#i-discord"></use></svg>
+          Discord
+        </a>
+        <div class="mobile-nav-server"><span class="status-dot" data-status="online"></span><span data-ip-text>fexingproject.ru:27015</span></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="assets/hero-mirage.svg" alt="" width="1600" height="1000" fetchpriority="high">
+        <div class="hero-grid"></div>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="status-pill" data-status="online">
+              <span class="status-dot"></span>
+              <span data-status-label>Сервер онлайн</span>
+            </span>
+            <span class="eyebrow-sep"></span>
+            <span class="eyebrow-note">Mirage · 24/7 · RU</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-title-line">Fexing</span>
+            <span class="hero-title-line hero-title-outline">Project</span>
+          </h1>
+
+          <p class="hero-sub">Одна карта, десять слотов и раунды, которые не заканчиваются. Классический Mirage 5×5 — без лишней суеты и платы за преимущество.</p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" data-copy-connect>
+              <svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+              Подключиться
+            </button>
+            <a class="btn btn-ghost" href="#privileges">
+              Привилегии
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+          </div>
+
+          <dl class="hero-stats">
+            <div><dt>Формат</dt><dd>5 × 5</dd></div>
+            <div><dt>Раунды</dt><dd>∞</dd></div>
+            <div><dt>Слоты</dt><dd>10</dd></div>
+            <div><dt>Регион</dt><dd>RU</dd></div>
+          </dl>
+        </div>
+
+        <aside class="server-card" data-tilt aria-label="Информация о сервере">
+          <div class="server-card-top">
+            <span class="mini-label">Server dossier</span>
+            <span class="status-pill status-pill--sm" data-status="online">
+              <span class="status-dot"></span>
+              <span data-status-label>Онлайн</span>
+            </span>
+          </div>
+
+          <div class="server-map">
+            <img src="assets/map-mirage.svg" alt="Стилизованная схема карты Mirage" width="820" height="580">
+            <div class="server-map-label"><span>de_mirage</span><span>01 / 01</span></div>
+          </div>
+
+          <div class="dossier-grid">
+            <div class="dossier-cell"><span>Карта</span><strong>Mirage</strong></div>
+            <div class="dossier-cell"><span>Формат</span><strong>5 × 5</strong></div>
+            <div class="dossier-cell"><span>Раунды</span><strong>Без лимита</strong></div>
+            <div class="dossier-cell"><span>Слоты</span><strong>10</strong></div>
+            <div class="dossier-cell"><span>Регион</span><strong>RU</strong></div>
+            <div class="dossier-cell"><span>Доступ</span><strong>Свободный</strong></div>
+          </div>
+
+          <div class="connect-box">
+            <span class="connect-prompt">&gt;</span>
+            <code data-connect>connect fexingproject.ru:27015</code>
+            <button class="icon-btn" type="button" data-copy-connect aria-label="Скопировать команду подключения">
+              <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+            </button>
+          </div>
+
+          <p class="server-card-note"><span class="dot-accent"></span> Сейчас в ротации только Mirage</p>
+        </aside>
+      </div>
+
+      <a class="hero-scroll" href="#server" aria-label="Листать вниз">
+        <span></span>
+        Scroll
+      </a>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span>de_mirage</span><i></i>
+          <span>5 × 5</span><i></i>
+          <span>Бесконечные раунды</span><i></i>
+          <span>Без pay-to-win</span><i></i>
+          <span>Онлайн 24/7</span><i></i>
+          <span>Вход без заявок</span><i></i>
+          <span>Mirage 24/7</span><i></i>
+          <span>Заходи и играй</span><i></i>
+        </div>
+        <div class="ticker-group">
+          <span>de_mirage</span><i></i>
+          <span>5 × 5</span><i></i>
+          <span>Бесконечные раунды</span><i></i>
+          <span>Без pay-to-win</span><i></i>
+          <span>Онлайн 24/7</span><i></i>
+          <span>Вход без заявок</span><i></i>
+          <span>Mirage 24/7</span><i></i>
+          <span>Заходи и играй</span><i></i>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="server">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker"><span>01</span> Сервер</p>
+          <h2 class="section-title">Всё, что нужно.<br><em>Ничего лишнего.</em></h2>
+          <p class="section-lead">FexingProject — это не ферма режимов и не магазин скинов. Один понятный сервер, на который заходят поиграть в нормальный CS2.</p>
+        </div>
+
+        <div class="feature-grid" data-reveal>
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-map"></use></svg></span>
+              <span class="feature-num">01</span>
+            </div>
+            <h3>Только Mirage</h3>
+            <p>Одна карта, заученная до последнего угла. Никаких голосований и внезапных переключений посреди матча.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg></span>
+              <span class="feature-num">02</span>
+            </div>
+            <h3>5 на 5</h3>
+            <p>Две команды по пять человек. Классические правила, знакомый темп и никакой толкучки на респавне.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-infinity"></use></svg></span>
+              <span class="feature-num">03</span>
+            </div>
+            <h3>Бесконечные раунды</h3>
+            <p>Счёт не останавливает игру. Матч живёт, пока на сервере есть люди, — заходи и играй, сколько хочется.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></span>
+              <span class="feature-num">04</span>
+            </div>
+            <h3>Честная игра</h3>
+            <p>Привилегии — это косметика и комфорт. Никаких скрытых бонусов к здоровью, урону или экономике.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+              <span class="feature-num">05</span>
+            </div>
+            <h3>Вход без заявок</h3>
+            <p>Не нужно регистрироваться, проходить проверки или ждать одобрения. Вставил connect — уже играешь.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-top">
+              <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-server"></use></svg></span>
+              <span class="feature-num">06</span>
+            </div>
+            <h3>Онлайн 24/7</h3>
+            <p>Сервер работает круглосуточно. Заходи утром, вечером или в три ночи — место найдётся.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--connect" id="connect">
+      <div class="container">
+        <div class="connect-panel" data-reveal>
+          <div class="connect-copy">
+            <p class="kicker"><span>02</span> Подключение</p>
+            <h2 class="section-title">Три шага<br>до первого раунда.</h2>
+            <p class="section-lead">Нужен только установленный CS2. Всё остальное займёт меньше минуты.</p>
+
+            <ol class="steps">
+              <li>
+                <span class="step-num">01</span>
+                <div>
+                  <h3>Запусти CS2</h3>
+                  <p>Дождись главного меню. Сервер открыт для всех — без заявок и регистрации.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">02</span>
+                <div>
+                  <h3>Открой консоль</h3>
+                  <p>Нажми <kbd>~</kbd>. Если консоль выключена — включи её в настройках игры.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">03</span>
+                <div>
+                  <h3>Вставь команду</h3>
+                  <p>Скопируй команду connect, вставь в консоль и нажми Enter. Ты на сервере.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="terminal-wrap">
+            <div class="terminal">
+              <div class="terminal-bar">
+                <span class="terminal-dots"><i></i><i></i><i></i></span>
+                <span>CS2 Console</span>
+                <span class="terminal-live"><span class="status-dot" data-status="online"></span>Live</span>
+              </div>
+              <div class="terminal-body">
+                <span class="terminal-prompt">]</span>
+                <code class="terminal-cmd" data-connect>connect fexingproject.ru:27015</code>
+                <span class="caret" aria-hidden="true"></span>
+              </div>
+              <div class="terminal-foot">
+                <span>Вставь в консоль и нажми Enter</span>
+                <button class="btn btn-primary btn-sm" type="button" data-copy-connect>Скопировать</button>
+              </div>
+            </div>
+
+            <div class="terminal-tips">
+              <p><strong>Консоль не открывается?</strong> Настройки → Игра → Включить консоль разработчика.</p>
+              <p><strong>Не подключается?</strong> Проверь интернет и попробуй ещё раз. Если не помогло — <a href="https://discord.gg/fexingproject" data-link="discord">напиши в Discord</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="map">
+      <div class="container map-layout">
+        <div class="map-visual" data-reveal>
+          <div class="map-glow" aria-hidden="true"></div>
+          <div class="map-frame">
+            <div class="map-frame-bar"><span>Map pool // 01</span><span>Only Mirage</span></div>
+            <img src="assets/map-mirage.svg" alt="Схема карты Mirage с обозначением точек A, B и мида" width="820" height="580">
+            <div class="map-frame-foot"><span>32°00′N 6°50′W</span><span>Scale 1:1000</span></div>
+          </div>
+        </div>
+
+        <div class="map-copy" data-reveal>
+          <p class="kicker"><span>03</span> Карта</p>
+          <h2 class="section-title">de_mirage.<br><em>Без вариантов.</em></h2>
+          <p class="section-lead">Пыль, длинные прострелы и вечная борьба за мид. Карта, на которой понятно всё — и всё равно каждый раунд идёт по-новому.</p>
+
+          <div class="map-tags">
+            <span class="map-tag">A-site</span>
+            <span class="map-tag">B-site</span>
+            <span class="map-tag">Mid</span>
+            <span class="map-tag">Palace</span>
+            <span class="map-tag">Apps</span>
+            <span class="map-tag">Ramp</span>
+            <span class="map-tag">Connector</span>
+            <span class="map-tag">Jungle</span>
+          </div>
+
+          <div class="map-callouts">
+            <div class="map-callout"><span>A</span><p><strong>Palace, Ramp и Connector</strong> — три входа и три головной боли для защиты.</p></div>
+            <div class="map-callout"><span>B</span><p><strong>Apps и B-short</strong> — быстрый заход или тихий размен через смок.</p></div>
+            <div class="map-callout"><span>M</span><p><strong>Мид</strong> — кто его контролирует, тот диктует темп всему раунду.</p></div>
+          </div>
+
+          <div class="map-note">
+            <svg class="icon" aria-hidden="true"><use href="#i-map"></use></svg>
+            <p>Сейчас в пуле только Mirage. Если сервер вырастет — новые карты добавим вместе с сообществом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--pricing" id="privileges">
+      <div class="container">
+        <div class="pricing-head" data-reveal>
+          <div>
+            <p class="kicker"><span>04</span> Привилегии</p>
+            <h2 class="section-title">Поддержи проект.<br><em>Не покупай преимущество.</em></h2>
+          </div>
+          <div class="pricing-aside">
+            <p class="section-lead">Косметика, слоты и комфорт. В стрельбе, уроне и балансе все равны — привилегия этого не меняет.</p>
+            <div class="period-toggle" data-period-toggle role="group" aria-label="Период привилегии">
+              <button type="button" data-period="month" class="is-active" aria-pressed="true">Месяц</button>
+              <button type="button" data-period="forever" aria-pressed="false">Навсегда <span class="save">до −45%</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card" data-reveal>
+            <div class="price-card-head">
+              <div>
+                <span class="tier-label">Start</span>
+                <h3 class="tier-name">VIP</h3>
+              </div>
+              <span class="tier-icon"><svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+            </div>
+            <p class="tier-desc">Чтобы выделиться в чате и играть с комфортом.</p>
+            <div class="price-row">
+              <span class="price"><span data-price="vip">149</span><span class="cur">₽</span></span>
+              <span class="per" data-period-label>/ мес</span>
+            </div>
+            <p class="price-note"><s class="price-old" data-price-old="vip">1 788 ₽</s><span data-price-note>Оплата за месяц</span></p>
+            <ul class="feature-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Резервный слот на полный сервер</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Тег [VIP] и цветной ник</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Скины оружия — !ws</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Ножи и перчатки — !knife, !gloves</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Модели агентов — !agent</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Доступ к VIP-чату</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="https://discord.gg/fexingproject" data-link="buy">Оформить VIP <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          </article>
+
+          <article class="price-card price-card--featured" data-reveal>
+            <span class="price-badge">Выбор игроков</span>
+            <div class="price-card-head">
+              <div>
+                <span class="tier-label">Popular</span>
+                <h3 class="tier-name">Premium</h3>
+              </div>
+              <span class="tier-icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+            </div>
+            <p class="tier-desc">Больше контроля над тем, как ты выглядишь в игре.</p>
+            <div class="price-row">
+              <span class="price"><span data-price="premium">299</span><span class="cur">₽</span></span>
+              <span class="per" data-period-label>/ мес</span>
+            </div>
+            <p class="price-note"><s class="price-old" data-price-old="premium">3 588 ₽</s><span data-price-note>Оплата за месяц</span></p>
+            <ul class="feature-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Всё из VIP</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Уникальный префикс на выбор</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Эффект и звук убийства</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Свой цвет чата</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Приоритетный вход</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Роль Premium в Discord</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="https://discord.gg/fexingproject" data-link="buy">Оформить Premium <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          </article>
+
+          <article class="price-card" data-reveal>
+            <div class="price-card-head">
+              <div>
+                <span class="tier-label">Maximum</span>
+                <h3 class="tier-name">Fexing</h3>
+              </div>
+              <span class="tier-icon"><svg class="icon" aria-hidden="true"><use href="#i-crown"></use></svg></span>
+            </div>
+            <p class="tier-desc">Для тех, кто хочет поддержать проект по-крупному.</p>
+            <div class="price-row">
+              <span class="price"><span data-price="elite">499</span><span class="cur">₽</span></span>
+              <span class="per" data-period-label>/ мес</span>
+            </div>
+            <p class="price-note"><s class="price-old" data-price-old="elite">5 988 ₽</s><span data-price-note>Оплата за месяц</span></p>
+            <ul class="feature-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Всё из Premium</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Максимальный приоритет входа</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Личный префикс и цвет</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Роль Fexing в Discord</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Ранний доступ к новым картам</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Голос в выборе ротации</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="https://discord.gg/fexingproject" data-link="buy">Оформить Fexing <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          </article>
+        </div>
+
+        <p class="pricing-foot">
+          <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+          <span>Привилегии не дают преимуществ в бою. Только косметика, слоты и комфорт. <a href="privileges.html">Сравнить все возможности</a>.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="container rules-grid">
+        <div data-reveal>
+          <p class="kicker"><span>05</span> Правила</p>
+          <h2 class="section-title">Играть должно<br><em>быть нормально.</em></h2>
+
+          <div class="rule-list">
+            <div class="rule-row">
+              <span>01</span>
+              <div><h3>Уважай людей</h3><p>Без оскорблений, травли и политики в чате. Спор — в игре, а не в микрофоне.</p></div>
+            </div>
+            <div class="rule-row">
+              <span>02</span>
+              <div><h3>Не читери</h3><p>Любой софт, дающий преимущество, — бан. Демо и апелляции — в Discord.</p></div>
+            </div>
+            <div class="rule-row">
+              <span>03</span>
+              <div><h3>Играй на команду</h3><p>Тимкилл, слив позиции и AFK портят раунд сразу пяти людям.</p></div>
+            </div>
+            <div class="rule-row">
+              <span>04</span>
+              <div><h3>Не засоряй голос</h3><p>Музыка, крики и шум мешают. Для болтовни есть текстовый чат.</p></div>
+            </div>
+            <div class="rule-row">
+              <span>05</span>
+              <div><h3>Держи ник читым</h3><p>Без рекламы, оскорблений и символики, которая нарушает правила.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="rules-aside" data-reveal>
+          <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+          <h3>Полные правила</h3>
+          <p>Все пункты, наказания и порядок апелляции — на отдельной странице. Там же — что делать, если ты не согласен с баном.</p>
+          <a class="btn btn-primary btn-block" href="rules.html">Читать правила</a>
+          <a class="aside-link" href="https://discord.gg/fexingproject" data-link="discord">Апелляция в Discord <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-intro" data-reveal>
+          <p class="kicker"><span>06</span> FAQ</p>
+          <h2 class="section-title">Коротко<br><em>о главном.</em></h2>
+          <p class="section-lead">Не нашёл ответ? <a href="https://discord.gg/fexingproject" data-link="discord">Спроси в Discord</a> — отвечаем без бюрократии.</p>
+        </div>
+
+        <div class="faq-list" data-reveal>
+          <details class="faq-item">
+            <summary>Нужно ли покупать Prime?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Нужна только установленная CS2 из Steam. Prime не обязателен — сервер открыт для всех.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Что значит «бесконечные раунды»?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Матч не заканчивается после 13 побед. Раунды идут один за другим, пока на сервере есть игроки. Счёт и статистика при этом ведутся.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Можно ли зайти с друзьями?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Да. Скинь им IP или команду connect — они подключатся напрямую. В одной команде может быть до пяти человек.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Почему только Mirage?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Так задумано: один сервер, одна карта, понятный пул. Когда захотим расширяться — спросим сообщество, а не решим за него.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Привилегии дают преимущество?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Нет. Только косметика, резервный слот и доступ к чату. Урон, здоровье, экономика и правила одинаковы для всех.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Как вернуть доступ после бана?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Напиши в Discord в канал апелляций. Приложи Steam ID и, если есть, демо. Решение принимает администрация — не в игре, а в тикете.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Сервер не подключается. Что делать?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-a"><p>Проверь интернет и попробуй connect ещё раз. Если не помогло — напиши в Discord: посмотрим, что с сервером, и поможем.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cta">
+      <div class="container">
+        <div class="cta-panel" data-reveal>
+          <div class="cta-bg" aria-hidden="true">
+            <img src="assets/hero-mirage.svg" alt="" width="1600" height="1000">
+          </div>
+          <div class="cta-inner">
+            <p class="kicker kicker--center"><span>07</span> Старт</p>
+            <h2>Миражи не ждут.</h2>
+            <p>Скопируй команду, открой консоль и займи место в одной из команд. Первый раунд начинается через минуту.</p>
+            <div class="cta-connect">
+              <code data-connect>connect fexingproject.ru:27015</code>
+              <button class="icon-btn" type="button" data-copy-connect aria-label="Скопировать команду подключения">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+              </button>
+            </div>
+            <div class="cta-actions">
+              <button class="btn btn-primary" type="button" data-copy-connect>
+                <svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+                Скопировать IP
+              </button>
+              <a class="btn btn-ghost" href="https://discord.gg/fexingproject" data-link="discord">
+                <svg class="icon" aria-hidden="true"><use href="#i-discord"></use></svg>
+                Discord
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="FexingProject — на главную">
+            <img class="brand-mark" src="assets/logo.svg" alt="" width="38" height="38">
+            <span class="brand-text"><strong>Fexing</strong><span>Project</span></span>
+          </a>
+          <p class="footer-desc">Пустынный сервер на Mirage. Одна карта, формат 5×5 и раунды, которые не заканчиваются.</p>
+          <span class="footer-badge">CS2 · Mirage · 5×5</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Сервер</h4>
+          <a href="index.html#server">О сервере</a>
+          <a href="index.html#map">Карта</a>
+          <a href="index.html#connect">Подключение</a>
+          <a href="index.html#faq">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Сообщество</h4>
+          <a href="https://discord.gg/fexingproject" data-link="discord">Discord</a>
+          <a href="https://t.me/fexingproject" data-link="telegram">Telegram</a>
+          <a href="https://steamcommunity.com/groups/fexingproject" data-link="steam">Steam-группа</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Документы</h4>
+          <a href="privileges.html">Привилегии</a>
+          <a href="rules.html">Правила</a>
+          <a href="rules.html#appeal">Апелляции</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> FexingProject. Фанатский проект, не связан с Valve Corporation.</p>
+        <p class="footer-made">Сделано на GitHub Pages <span>·</span> Без лишнего пафоса</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

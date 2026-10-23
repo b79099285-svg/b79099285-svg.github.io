@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Абстрактный пейзаж Миража на закате">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05070A"/>
+      <stop offset=".34" stop-color="#0A0F16"/>
+      <stop offset=".52" stop-color="#171214"/>
+      <stop offset=".68" stop-color="#452813"/>
+      <stop offset=".8" stop-color="#24170F"/>
+      <stop offset="1" stop-color="#090706"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFE1B0" stop-opacity=".9"/>
+      <stop offset=".18" stop-color="#FFB55C" stop-opacity=".55"/>
+      <stop offset=".48" stop-color="#FF7A1A" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#FF6A00" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sunCore" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF3DC"/>
+      <stop offset=".55" stop-color="#FFE0B4"/>
+      <stop offset="1" stop-color="#FFB05A"/>
+    </radialGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FF9E4A" stop-opacity="0"/>
+      <stop offset=".38" stop-color="#FFC27A" stop-opacity=".3"/>
+      <stop offset=".62" stop-color="#FF9E4A" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#FF9E4A" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="duneBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A1A10"/>
+      <stop offset=".55" stop-color="#1A100A"/>
+      <stop offset="1" stop-color="#100B07"/>
+    </linearGradient>
+    <linearGradient id="duneMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1C120B"/>
+      <stop offset="1" stop-color="#0C0806"/>
+    </linearGradient>
+    <linearGradient id="duneFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0C0907"/>
+      <stop offset="1" stop-color="#060504"/>
+    </linearGradient>
+    <linearGradient id="leftShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#05070A" stop-opacity=".95"/>
+      <stop offset=".48" stop-color="#05070A" stop-opacity=".55"/>
+      <stop offset=".72" stop-color="#05070A" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#05070A" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blurBig" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+    <filter id="blurMid" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".78" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .4"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+
+  <!-- stars -->
+  <g fill="#DCE6F2" opacity=".5">
+    <circle cx="140" cy="110" r="1.4"/>
+    <circle cx="290" cy="72" r="1"/>
+    <circle cx="520" cy="150" r="1.2"/>
+    <circle cx="660" cy="88" r="1.6"/>
+    <circle cx="840" cy="130" r="1"/>
+    <circle cx="980" cy="58" r="1.2"/>
+    <circle cx="1230" cy="94" r="1.4"/>
+    <circle cx="1420" cy="160" r="1"/>
+    <circle cx="1500" cy="70" r="1.2"/>
+    <circle cx="380" cy="210" r="1"/>
+    <circle cx="70" cy="300" r="1.2"/>
+    <circle cx="760" cy="190" r="1"/>
+  </g>
+
+  <!-- sun -->
+  <circle cx="1125" cy="500" r="470" fill="url(#sunGlow)"/>
+  <circle cx="1125" cy="500" r="116" fill="#FFC47A" opacity=".45" filter="url(#blurBig)"/>
+  <circle cx="1125" cy="500" r="54" fill="url(#sunCore)" opacity=".95"/>
+
+  <!-- haze -->
+  <g>
+    <ellipse cx="1125" cy="566" rx="760" ry="24" fill="url(#haze)"/>
+    <ellipse cx="1050" cy="612" rx="700" ry="14" fill="url(#haze)" opacity=".8"/>
+    <ellipse cx="1200" cy="530" rx="520" ry="10" fill="url(#haze)" opacity=".55"/>
+    <rect x="620" y="630" width="980" height="3" fill="#FFB56A" opacity=".08"/>
+  </g>
+
+  <!-- distant city -->
+  <g fill="#0A0807">
+    <rect x="640" y="596" width="960" height="90"/>
+    <rect x="690" y="554" width="120" height="60"/>
+    <rect x="706" y="566" width="8" height="14" fill="#FFB56A" opacity=".22"/>
+    <rect x="736" y="566" width="8" height="14" fill="#FFB56A" opacity=".22"/>
+    <rect x="766" y="578" width="8" height="10" fill="#FFB56A" opacity=".16"/>
+
+    <rect x="828" y="520" width="46" height="94"/>
+    <rect x="884" y="548" width="70" height="66"/>
+
+    <!-- square tower -->
+    <rect x="932" y="446" width="86" height="168"/>
+    <ellipse cx="975" cy="446" rx="43" ry="20"/>
+    <rect x="968" y="404" width="14" height="28"/>
+    <path d="M975 398l7 12h-14l7-12Z"/>
+    <rect x="952" y="482" width="9" height="20" fill="#FFB56A" opacity=".28"/>
+    <rect x="976" y="482" width="9" height="20" fill="#FFB56A" opacity=".2"/>
+    <rect x="952" y="530" width="9" height="20" fill="#FFB56A" opacity=".18"/>
+    <rect x="976" y="530" width="9" height="20" fill="#FFB56A" opacity=".26"/>
+
+    <!-- minaret -->
+    <rect x="1053" y="404" width="16" height="210"/>
+    <rect x="1046" y="446" width="30" height="8"/>
+    <rect x="1048" y="512" width="26" height="7"/>
+    <path d="M1053 404l8-22 8 22h-16Z"/>
+    <circle cx="1061" cy="378" r="4"/>
+
+    <!-- low blocks -->
+    <rect x="1084" y="538" width="54" height="76"/>
+
+    <!-- grand dome -->
+    <rect x="1138" y="518" width="176" height="96"/>
+    <path d="M1128 518c0-54 40-92 98-92s98 38 98 92h-196Z"/>
+    <rect x="1220" y="398" width="8" height="32"/>
+    <circle cx="1224" cy="394" r="7"/>
+    <path d="M1160 548h20v66h-20zM1272 548h20v66h-20z" fill="#FFB56A" opacity=".12"/>
+
+    <!-- gate -->
+    <rect x="1330" y="512" width="128" height="102"/>
+    <rect x="1330" y="492" width="24" height="20"/>
+    <rect x="1434" y="492" width="24" height="20"/>
+    <path d="M1370 614v-42c0-19 13-32 24-32s24 13 24 32v42h-48Z" fill="#160E08"/>
+    <rect x="1352" y="536" width="10" height="20" fill="#FFB56A" opacity=".16"/>
+
+    <!-- antennas & crane -->
+    <path d="M1472 614V500h6v114M1472 520h44M1516 520v18M1512 538h9" stroke="#0A0807" stroke-width="5"/>
+    <path d="M1540 614V540h44v74M1552 540v-22M1570 540v-30" stroke="#0A0807" stroke-width="6"/>
+    <rect x="1490" y="560" width="22" height="40" fill="#FFB56A" opacity=".07"/>
+  </g>
+
+  <!-- city rim light -->
+  <g fill="none" stroke="#FFB56A" stroke-width="2" opacity=".16">
+    <path d="M932 448h86"/>
+    <path d="M1138 520h176"/>
+    <path d="M1330 514h128"/>
+    <path d="M1472 500h44"/>
+  </g>
+
+  <!-- dunes -->
+  <path d="M0 668C170 618 340 650 540 632c220-20 400 34 620 12 160-16 300 8 440-18v374H0V668Z" fill="url(#duneBack)"/>
+  <path d="M0 762c212-66 420-20 660-48 250-30 460 46 940-18v304H0V762Z" fill="url(#duneMid)"/>
+  <path d="M0 886c280-84 600-22 930-62 250-30 470 34 670 4v172H0V886Z" fill="url(#duneFront)"/>
+
+  <!-- dune ridges -->
+  <g fill="none" stroke="#FFB56A" stroke-width="2" opacity=".09">
+    <path d="M0 668C170 618 340 650 540 632c220-20 400 34 620 12 160-16 300 8 440-18"/>
+    <path d="M0 762c212-66 420-20 660-48 250-30 460 46 940-18"/>
+    <path d="M0 886c280-84 600-22 930-62 250-30 470 34 670 4"/>
+  </g>
+
+  <!-- foreground rocks -->
+  <g fill="#050403" opacity=".9">
+    <path d="M1180 946l38-24 32 18 44-8 36 30-150 16v-32Z"/>
+    <path d="M260 980l46-22 30 14 26-6 28 26-130 10v-22Z"/>
+  </g>
+
+  <!-- dust -->
+  <g fill="#FFD7A6" opacity=".22">
+    <circle cx="1010" cy="720" r="2"/>
+    <circle cx="1080" cy="690" r="1.2"/>
+    <circle cx="1210" cy="740" r="1.6"/>
+    <circle cx="1320" cy="700" r="1"/>
+    <circle cx="900" cy="760" r="1.4"/>
+    <circle cx="1450" cy="760" r="1.8"/>
+    <circle cx="760" cy="700" r="1"/>
+    <circle cx="1380" cy="660" r="1.2"/>
+  </g>
+
+  <!-- left shade for copy -->
+  <rect width="980" height="1000" fill="url(#leftShade)"/>
+
+  <!-- grain -->
+  <rect width="1600" height="1000" filter="url(#grain)" opacity=".42" style="mix-blend-mode:overlay"/>
+</svg>

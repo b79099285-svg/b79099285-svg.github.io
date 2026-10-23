@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 580" role="img" aria-label="Стилизованная тактическая схема карты Mirage">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#16202A" stroke-width="1"/>
+    </pattern>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#FF9E2C" stroke-opacity=".09" stroke-width="2"/>
+    </pattern>
+    <radialGradient id="mapGlow" cx=".5" cy=".45" r=".65">
+      <stop offset="0" stop-color="#FF8A1E" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#FF8A1E" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="siteGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="820" height="580" fill="#0A0E13"/>
+  <rect width="820" height="580" fill="url(#grid)" opacity=".65"/>
+  <rect width="820" height="580" fill="url(#mapGlow)"/>
+
+  <!-- frame -->
+  <rect x=".5" y=".5" width="819" height="579" fill="none" stroke="#26313D"/>
+
+  <!-- header -->
+  <g font-family="'Consolas','Courier New',monospace" letter-spacing="2.4">
+    <text x="28" y="34" fill="#5F6D7C" font-size="10">TACTICAL MAP // 01</text>
+    <text x="792" y="34" fill="#FF9E2C" font-size="10" text-anchor="end">DE_MIRAGE</text>
+    <text x="792" y="50" fill="#3F4B58" font-size="8" text-anchor="end">5 × 5 // ∞ ROUNDS</text>
+  </g>
+  <line x1="28" y1="44" x2="792" y2="44" stroke="#1B2530"/>
+
+  <!-- corridors -->
+  <g fill="none" stroke="#1A232D" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M215 125H560" stroke-width="46"/>
+    <path d="M210 135V300" stroke-width="42"/>
+    <path d="M210 300h34v70" stroke-width="36"/>
+    <path d="M410 190l22 180" stroke-width="46"/>
+    <path d="M560 170H480v70" stroke-width="40"/>
+    <path d="M515 250h60" stroke-width="34"/>
+    <path d="M432 360H320v80" stroke-width="38"/>
+    <path d="M600 430H480v-70" stroke-width="46"/>
+    <path d="M600 430h-90" stroke-width="46"/>
+    <path d="M510 500H350v-40" stroke-width="36"/>
+    <path d="M300 470h-55" stroke-width="34"/>
+    <path d="M125 300v55" stroke-width="30"/>
+    <path d="M130 365h30" stroke-width="30"/>
+  </g>
+
+  <!-- zones -->
+  <g fill="#111A23" stroke="#2B3744" stroke-width="1.5">
+    <rect x="76" y="76" width="164" height="104" rx="3"/>
+    <rect x="560" y="76" width="164" height="174" rx="3"/>
+    <rect x="500" y="72" width="54" height="98" rx="3"/>
+    <rect x="728" y="82" width="28" height="148" rx="3"/>
+    <rect x="500" y="180" width="54" height="72" rx="3"/>
+    <rect x="455" y="220" width="58" height="58" rx="3"/>
+    <rect x="400" y="250" width="48" height="52" rx="3"/>
+    <rect x="340" y="225" width="50" height="44" rx="3"/>
+    <rect x="300" y="295" width="55" height="44" rx="3"/>
+    <rect x="280" y="350" width="46" height="72" rx="3"/>
+    <rect x="80" y="355" width="165" height="135" rx="3"/>
+    <rect x="80" y="255" width="70" height="94" rx="3"/>
+    <rect x="250" y="380" width="80" height="74" rx="3"/>
+    <rect x="245" y="458" width="80" height="56" rx="3"/>
+    <rect x="585" y="410" width="165" height="100" rx="3"/>
+  </g>
+
+  <!-- bombsite fills -->
+  <g>
+    <rect x="560" y="76" width="164" height="174" rx="3" fill="url(#hatch)" stroke="#FF9E2C" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <rect x="80" y="355" width="165" height="135" rx="3" fill="url(#hatch)" stroke="#FF9E2C" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="6 6"/>
+  </g>
+
+  <!-- site markers -->
+  <g>
+    <circle cx="642" cy="160" r="42" fill="#0A0E13" fill-opacity=".35" stroke="#FF9E2C" stroke-opacity=".55"/>
+    <text x="642" y="177" fill="#FF9E2C" font-family="'Unbounded',sans-serif" font-size="44" font-weight="700" text-anchor="middle" filter="url(#siteGlow)">A</text>
+    <text x="642" y="214" fill="#FF9E2C" fill-opacity=".6" font-family="'Consolas',monospace" font-size="8" letter-spacing="2" text-anchor="middle">BOMBSITE</text>
+    <circle cx="162" cy="422" r="42" fill="#0A0E13" fill-opacity=".35" stroke="#FF9E2C" stroke-opacity=".55"/>
+    <text x="162" y="439" fill="#FF9E2C" font-family="'Unbounded',sans-serif" font-size="44" font-weight="700" text-anchor="middle" filter="url(#siteGlow)">B</text>
+    <text x="162" y="476" fill="#FF9E2C" fill-opacity=".6" font-family="'Consolas',monospace" font-size="8" letter-spacing="2" text-anchor="middle">BOMBSITE</text>
+  </g>
+
+  <!-- routes -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M648 452l-80-10-45-55-20-55 5-42 45-32 38-18 38-28" stroke="#FF9E2C" stroke-opacity=".55" stroke-width="2" stroke-dasharray="7 7"/>
+    <path d="M622 470H500l-70 16-90-8-35-28-12-38-28-18" stroke="#FF9E2C" stroke-opacity=".45" stroke-width="2" stroke-dasharray="7 7"/>
+    <path d="M232 132h170c50 0 80 8 120 30" stroke="#58B6FF" stroke-opacity=".35" stroke-width="2" stroke-dasharray="5 8"/>
+    <path d="M200 172v100c0 40 0 60 25 88" stroke="#58B6FF" stroke-opacity=".35" stroke-width="2" stroke-dasharray="5 8"/>
+  </g>
+
+  <!-- labels -->
+  <g fill="#8997A7" font-family="'Consolas','Courier New',monospace" font-size="9" letter-spacing="1.6">
+    <text x="104" y="124">CT SPAWN</text>
+    <text x="612" y="452">T SPAWN</text>
+    <text x="504" y="110" transform="rotate(-90 504 110)" fill="#6E7C8C">PALACE</text>
+    <text x="742" y="160" transform="rotate(-90 742 160)" fill="#6E7C8C">RAMP</text>
+    <text x="506" y="210" fill="#6E7C8C">JUNGLE</text>
+    <text x="461" y="252" fill="#6E7C8C">CONN</text>
+    <text x="404" y="278" fill="#6E7C8C">STAIRS</text>
+    <text x="346" y="250" fill="#6E7C8C">WINDOW</text>
+    <text x="306" y="320" fill="#6E7C8C">CAT</text>
+    <text x="284" y="390" fill="#6E7C8C">SHORT</text>
+    <text x="86" y="294" fill="#6E7C8C">APPS</text>
+    <text x="256" y="420" fill="#6E7C8C">MARKET</text>
+    <text x="250" y="492" fill="#6E7C8C">B SHORT</text>
+    <text x="386" y="334" fill="#C8D2DD" font-size="10">MID</text>
+    <text x="586" y="404" fill="#6E7C8C">T RAMP</text>
+  </g>
+
+  <!-- route legend -->
+  <g font-family="'Consolas',monospace" font-size="8" letter-spacing="1.2">
+    <line x1="28" y1="548" x2="58" y2="548" stroke="#FF9E2C" stroke-opacity=".6" stroke-dasharray="4 4"/>
+    <text x="66" y="551" fill="#5F6D7C">T ROUTES</text>
+    <line x1="140" y1="548" x2="170" y2="548" stroke="#58B6FF" stroke-opacity=".5" stroke-dasharray="3 5"/>
+    <text x="178" y="551" fill="#5F6D7C">CT ROTATION</text>
+  </g>
+
+  <!-- scale -->
+  <g transform="translate(630 540)" font-family="'Consolas',monospace" font-size="7" fill="#4A5664">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="#4A5664"/>
+    <line x1="0" y1="-4" x2="0" y2="4" stroke="#4A5664"/>
+    <line x1="50" y1="-3" x2="50" y2="3" stroke="#4A5664"/>
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="#4A5664"/>
+    <text x="0" y="14">0</text>
+    <text x="44" y="14">10M</text>
+    <text x="88" y="14">20M</text>
+  </g>
+
+  <!-- compass -->
+  <g transform="translate(782 534)" stroke="#5F6D7C" fill="#5F6D7C">
+    <circle r="17" fill="none" stroke-opacity=".5"/>
+    <path d="M0 -12L4 3H-4L0-12Z" fill="#FF9E2C" stroke="none"/>
+    <path d="M0 12L4 3H-4L0 12Z" fill="#3F4B58" stroke="none"/>
+    <text x="0" y="-22" text-anchor="middle" font-family="'Consolas',monospace" font-size="7" stroke="none">N</text>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#FF9E2C" stroke-opacity=".5" stroke-width="2">
+    <path d="M18 18h22M18 18v22"/>
+    <path d="M802 18h-22M802 18v22"/>
+    <path d="M18 562h22M18 562v-22"/>
+    <path d="M802 562h-22M802 562v-22"/>
+  </g>
+</svg>
